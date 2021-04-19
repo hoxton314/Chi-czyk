@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="stylesheet" href="style/lobby.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./lib/socket.io/socket.io.js"></script>
+    <script src="./src/main.js"></script>
+    <script src="./src/lobby.js"></script>
+    <script src="./src/chat.js"></script>
+    <script src="./src/game.js"></script>
+
+</head>
+
+<body>
+    <div id="list-container">
+        <div class="section-header">Party list</div>
+        <hr>
+        <div id="rooms"></div>
+        <hr>
+        <div id="creator-container">
+            <div id="room-creation"></div>
+            <input id="roomname" />
+            <input type="button" id="roombutton" value="create room" />
+        </div>
+    </div>
+
+
+    <div id="party">
+        <div class="section-header">Current Party</div>
+        <hr>
+        <div id="user-list"></div>
+        <div id="ready">
+            <hr>
+            <div class="inner-ready">
+                READY
+                <input type="checkbox" id="input-ready" name="ready">
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="chat-container">
+        <div class="section-header">CHAT</div>
+        <hr>
+        <div id="conversation"></div>
+        <input id="data" />
+        <input type="button" id="datasend" value="send" />
+    </div>
+
+    <div id="game-container"> Future game display </div>
+
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+.section-header{
+text-align: center;
+text-decoration: underline;
+font-weight:bold;
+}
+hr { margin: 1px; }
+input{
+    background-color:#66A0CC;
+}
+
+#list-container{
+    position: absolute;
+    left:0px;
+    top: 0px;
+    width: 10%;
+    height: 300px;
+    border: 1px darkgray solid;
+    background-color: #B4608E;
+}
+
+#rooms{
+    width: 100%;
+    height: 70%;
+    overflow-y: scroll;
+}
+
+
+
+#creator-container{
+    position: absolute;
+    bottom:0px;
+    left: 0px;
+    width: 100%;
+    height:18%;
+
+}
+#roomname{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 95%;
+    margin: auto;
+}
+#roombutton{
+    position: absolute;
+    bottom:2%;
+    left: 0px;
+    width: 100%;  
+    margin: auto;
+}
+
+#party{
+    position: absolute;
+    left:10%;
+    top: 0px;
+    width: 10%;
+    height: 300px;
+    border: 1px darkgray solid;
+    background-color: #6C79D9;
+}
+
+
+#ready{
+    position: absolute;
+    bottom:0px;
+    left: 0px;
+    width: 100%;
+    height:10%;  
+}
+#ready > .inner-ready{
+    margin:auto;
+    text-align: center;
+}
+
+
+
+#chat-container{
+    position: absolute;
+    left:0px;
+    top: 300px;
+    width: 20%;
+    height: 50%;
+    border: 1px darkgray solid;
+    background-color: #A884F0;
+}
+#conversation{
+    overflow-y: scroll;
+    height: 90%;
+    width: 100%;
+}
+#data{
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+    width: 80%; 
+}
+#datasend{
+    position: absolute;
+    right:0px;
+    bottom: 0px;
+    width: 20%;
+}
+#game-container{
+    position: absolute;
+    left:20%;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    border: 1px darkgray solid;
+}
