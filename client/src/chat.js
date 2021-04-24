@@ -1,9 +1,13 @@
 
 $(function () {
+
     $('#datasend').click(function () {
         var message = $('#data').val()
         $('#data').val('')
-        socket.emit('sendchat', message)
+        if (message != undefined && message != '') {
+            socket.emit('sendchat', message)
+        }
+
     })
 
     $('#data').keypress(function (e) {

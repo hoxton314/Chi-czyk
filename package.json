@@ -23,6 +23,7 @@
     "memcached": "^2.2.2",
     "redux": "^4.0.5",
     "socket.io": "^4.0.1",
+    "uuid": "^8.3.2",
     "websocket": "^1.0.34"
   }
 }
