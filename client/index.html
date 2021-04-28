@@ -9,8 +9,11 @@
     <title>Start</title>
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <link rel="stylesheet" href="style/lobby.css">
+    <link rel="stylesheet" href="style/game.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./lib/socket.io/socket.io.js"></script>
+
     <script src="./src/main.js"></script>
     <script src="./src/chat.js"></script>
     <script src="./src/lobby.js"></script>
@@ -55,8 +58,110 @@
         <input type="button" id="datasend" value="send" />
     </div>
 
-    <div id="game-container"> Future game display </div>
+    <div id="game-container">
+        <!-- STARTING POS -->
+        <!-- YELLOW -->
+        <div class="yellow-box" id="SY0"></div>
+        <div class="yellow-box" id="SY1"></div>
+        <div class="yellow-box" id="SY2"></div>
+        <div class="yellow-box" id="SY3"></div>
+        <!-- GREEN -->
+        <div class="green-box" id="SG0"></div>
+        <div class="green-box" id="SG1"></div>
+        <div class="green-box" id="SG2"></div>
+        <div class="green-box" id="SG3"></div>
+        <!-- RED -->
+        <div class="red-box" id="SR0"></div>
+        <div class="red-box" id="SR1"></div>
+        <div class="red-box" id="SR2"></div>
+        <div class="red-box" id="SR3"></div>
+        <!-- BLUE -->
+        <div class="blue-box" id="SB0"></div>
+        <div class="blue-box" id="SB1"></div>
+        <div class="blue-box" id="SB2"></div>
+        <div class="blue-box" id="SB3"></div>
 
+        <!-- MOVEMENT POS -->
+        <!-- YELLOW -->
+        <div class="yellow-box yellow-box-special" id="MY0"></div>
+        <div class="yellow-box" id="MY1"></div>
+        <div class="yellow-box" id="MY2"></div>
+        <div class="yellow-box" id="MY3"></div>
+        <div class="yellow-box" id="MY4"></div>
+        <div class="yellow-box" id="MY5"></div>
+        <div class="yellow-box" id="MY6"></div>
+        <div class="yellow-box" id="MY7"></div>
+        <div class="yellow-box" id="MY8"></div>
+        <div class="yellow-box" id="MY9"></div>
+        <!-- GREEN -->
+        <div class="green-box green-box-special" id="MG0"></div>
+        <div class="green-box" id="MG1"></div>
+        <div class="green-box" id="MG2"></div>
+        <div class="green-box" id="MG3"></div>
+        <div class="green-box" id="MG4"></div>
+        <div class="green-box" id="MG5"></div>
+        <div class="green-box" id="MG6"></div>
+        <div class="green-box" id="MG7"></div>
+        <div class="green-box" id="MG8"></div>
+        <div class="green-box" id="MG9"></div>
+        <!-- RED -->
+        <div class="red-box red-box-special" id="MR0"></div>
+        <div class="red-box" id="MR1"></div>
+        <div class="red-box" id="MR2"></div>
+        <div class="red-box" id="MR3"></div>
+        <div class="red-box" id="MR4"></div>
+        <div class="red-box" id="MR5"></div>
+        <div class="red-box" id="MR6"></div>
+        <div class="red-box" id="MR7"></div>
+        <div class="red-box" id="MR8"></div>
+        <div class="red-box" id="MR9"></div>
+        <!-- BLUE -->
+        <div class="blue-box blue-box-special" id="MB0"></div>
+        <div class="blue-box" id="MB1"></div>
+        <div class="blue-box" id="MB2"></div>
+        <div class="blue-box" id="MB3"></div>
+        <div class="blue-box" id="MB4"></div>
+        <div class="blue-box" id="MB5"></div>
+        <div class="blue-box" id="MB6"></div>
+        <div class="blue-box" id="MB7"></div>
+        <div class="blue-box" id="MB8"></div>
+        <div class="blue-box" id="MB9"></div>
+
+        <!-- ENDING POS -->
+
+        <!-- YELLOW -->
+        <div class="yellow-box yellow-box-special" id="EY0"></div>
+        <div class="yellow-box yellow-box-special" id="EY1"></div>
+        <div class="yellow-box yellow-box-special" id="EY2"></div>
+        <div class="yellow-box yellow-box-special" id="EY3"></div>
+        <!-- GREEN -->
+        <div class="green-box green-box-special" id="EG0"></div>
+        <div class="green-box green-box-special" id="EG1"></div>
+        <div class="green-box green-box-special" id="EG2"></div>
+        <div class="green-box green-box-special" id="EG3"></div>
+        <!-- RED -->
+        <div class="red-box red-box-special" id="ER0"></div>
+        <div class="red-box red-box-special" id="ER1"></div>
+        <div class="red-box red-box-special" id="ER2"></div>
+        <div class="red-box red-box-special" id="ER3"></div>
+        <!-- BLUE -->
+        <div class="blue-box blue-box-special" id="EB0"></div>
+        <div class="blue-box blue-box-special" id="EB1"></div>
+        <div class="blue-box blue-box-special" id="EB2"></div>
+        <div class="blue-box blue-box-special" id="EB3"></div>
+
+        <!--DICE-->
+        <div id="dice"></div>
+
+        <!--ARROWS-->
+        <div id='arrowY'></div>
+        <div id='arrowG'></div>
+        <div id='arrowR'></div>
+        <div id='arrowB'></div>
+    </div>
+    <div class="tura">
+        <div class="turatext"></div>
+    </div>
 </body>
 
 </html>

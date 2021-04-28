@@ -1,0 +1,500 @@
+*{
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.tura{
+    position: absolute; 
+    width: 10%; 
+    height: 10%; 
+    background-color:gray;
+    left:0px;
+    top:0px;
+    text-align: center;
+}
+.turatext{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-left: 20%;
+}
+#game-container{
+    position: absolute;
+    left:22%;
+    top: 2%;
+    border: 0px black solid;
+    width: 90vmin;
+    height: 90vmin;
+}
+
+.yellow-box, .green-box, .red-box, .blue-box {
+    width: 9%;
+    height: 9%;
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px black solid;
+}
+
+.yellow-box{
+    background-color: #FEE191;
+} 
+.green-box {
+    background-color: #B0D8A4;
+}
+.red-box {
+    background-color: #E84258;
+}
+.blue-box {
+    background-color: #8281A0;
+}
+.yellow-box-special{
+    background-color: #eee657 !important;
+}
+.green-box-special{
+    background-color: #2cc990 !important;
+}
+.red-box-special{
+    background-color: #e0112c !important;
+}
+.blue-box-special{
+    background-color: #4946a4 !important;
+}
+
+.MYpawn{
+    float: left;
+    width: 50%;
+    height: 50%;
+    background-image: url('../assets/Ypawn.png');
+    background-size: 100% 100%;
+}
+.MGpawn{
+    float: left;
+    width: 50%;
+    height: 50%;
+    background-image: url('../assets/Gpawn.png');
+    background-size: 100% 100%;
+}
+.MRpawn{
+    float: left;
+    width: 50%;
+    height: 50%;
+    background-image: url('../assets/Rpawn.png');
+    background-size: 100% 100%;
+}
+.MBpawn{
+    float: left;
+    width: 50%;
+    height: 50%;
+    background-image: url('../assets/Bpawn.png');
+    background-size: 100% 100%;
+}
+
+.SYpawn{
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/Ypawn.png');
+    background-size: 100% 100%;
+}
+.SGpawn{
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/Gpawn.png');
+    background-size: 100% 100%;
+}
+.SRpawn{
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/Rpawn.png');
+    background-size: 100% 100%;
+}
+.SBpawn{
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/Bpawn.png');
+    background-size: 100% 100%;
+}
+
+.EYpawn{
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/Ypawn.png');
+    background-size: 100% 100%;
+}
+.EGpawn{
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/Gpawn.png');
+    background-size: 100% 100%;
+}
+.ERpawn{
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/Rpawn.png');
+    background-size: 100% 100%;
+}
+.EBpawn{
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/Bpawn.png');
+    background-size: 100% 100%;
+}
+
+#dice{
+    width: 9%;
+    height: 9%;
+    position: absolute;
+    left:45%;
+    top:45%;
+    /*background-image: url('../assets/dice1.png');*/
+    background-size: 100% 100%;
+}
+#arrowY{
+    width: 9%;
+    height: 9%;
+    position: absolute;
+    background-image: url('../assets/arrow.png');
+    background-size: 100% 100%;
+    filter: invert(99%) sepia(30%) saturate(2809%) hue-rotate(347deg) brightness(96%) contrast(95%);
+    transform: rotate(0deg);
+    top:27%;
+    left:0%;
+}
+#arrowG{
+    width: 9%;
+    height: 9%;
+    position: absolute;
+    background-image: url('../assets/arrow.png');
+    background-size: 100% 100%;
+    filter: invert(59%) sepia(49%) saturate(601%) hue-rotate(107deg) brightness(101%) contrast(87%);
+    transform: rotate(90deg);
+    top:0%;
+    left:63%;
+}
+#arrowR{
+    width: 9%;
+    height: 9%;
+    position: absolute;
+    background-image: url('../assets/arrow.png');
+    background-size: 100% 100%;
+    filter: invert(16%) sepia(55%) saturate(5783%) hue-rotate(343deg) brightness(94%) contrast(102%);
+    transform: rotate(180deg);
+    top:63%;
+    left:90%;
+}
+#arrowB{
+    width: 9%;
+    height: 9%;
+    position: absolute;
+    background-image: url('../assets/arrow.png');
+    background-size: 100% 100%;
+    filter: invert(30%) sepia(10%) saturate(4743%) hue-rotate(207deg) brightness(95%) contrast(94%);
+    transform: rotate(270deg);
+    top:90%;
+    left:27%;
+}
+/*  STARTING POS  */
+#SY0{
+    left:0%;
+    top:0%;
+}
+#SY1{
+    left:9%;
+    top:0%;
+}
+#SY2{
+    left:0%;
+    top:9%;
+}
+#SY3{
+    left:9%;
+    top:9%;
+}
+#SG0{
+    left:81%;
+    top:0%;
+}
+#SG1{
+    left:90%;
+    top:0%;
+}
+#SG2{
+    left:81%;
+    top:9%;
+}
+#SG3{
+    left:90%;
+    top:9%;
+}
+#SR0{
+    left:81%;
+    top:81%;
+}
+#SR1{
+    left:90%;
+    top:81%;
+}
+#SR2{
+    left:81%;
+    top:90%;
+}
+#SR3{
+    left:90%;
+    top:90%;
+}
+#SB0{
+    left:0%;
+    top:81%;
+}
+#SB1{
+    left:9%;
+    top:81%;
+}
+#SB2{
+    left:0%;
+    top:90%;
+}
+#SB3{
+    left:9%;
+    top:90%;
+}
+
+/* MOVEMENT */
+
+
+#MY0{
+    left:0%;
+    top:36%;
+}
+#MY1{
+    left:9%;
+    top:36%;
+}
+#MY2{
+    left:18%;
+    top:36%;
+}
+#MY3{
+    left:27%;
+    top:36%;
+}
+#MY4{
+    left:36%;
+    top:36%;
+}
+#MY5{
+    left:36%;
+    top:27%;
+}
+#MY6{
+    left:36%;
+    top:18%;
+}
+#MY7{
+    left:36%;
+    top:9%;
+}
+#MY8{
+    left:36%;
+    top:0%;
+}
+#MY9{
+    left:45%;
+    top:0%;
+}
+
+#MG0{
+    left:54%;
+    top:0%;
+}
+#MG1{
+    left:54%;
+    top:9%;
+}
+#MG2{
+    left:54%;
+    top:18%;
+}
+#MG3{
+    left:54%;
+    top:27%;
+}
+#MG4{
+    left:54%;
+    top:36%;
+}
+#MG5{
+    left:63%;
+    top:36%;
+}
+#MG6{
+    left:72%;
+    top:36%;
+}
+#MG7{
+    left:81%;
+    top:36%;
+}
+#MG8{
+    left:90%;
+    top:36%;
+}
+#MG9{
+    left:90%;
+    top:45%;
+}
+
+#MR0{
+    left:90%;
+    top:54%;
+}
+#MR1{
+    left:81%;
+    top:54%;
+}
+#MR2{
+    left:72%;
+    top:54%;
+}
+#MR3{
+    left:63%;
+    top:54%;
+}
+#MR4{
+    left:54%;
+    top:54%;
+}
+#MR5{
+    left:54%;
+    top:63%;
+}
+#MR6{
+    left:54%;
+    top:72%;
+}
+#MR7{
+    left:54%;
+    top:81%;
+}
+#MR8{
+    left:54%;
+    top:90%;
+}
+#MR9{
+    left:45%;
+    top:90%;
+}
+
+
+
+#MB0{
+    left:36%;
+    top:90%;
+}
+#MB1{
+    left:36%;
+    top:81%;
+}
+#MB2{
+    left:36%;
+    top:72%;
+}
+#MB3{
+    left:36%;
+    top:63%;
+}
+#MB4{
+    left:36%;
+    top:54%;
+}
+#MB5{
+    left:27%;
+    top:54%;
+}
+#MB6{
+    left:18%;
+    top:54%;
+}
+#MB7{
+    left:9%;
+    top:54%;
+}
+#MB8{
+    left:0%;
+    top:54%;
+}
+#MB9{
+    left:0%;
+    top:45%;
+}
+
+
+/* END */
+#EY0{
+    left:9%;
+    top:45%;
+}
+#EY1{
+    left:18%;
+    top:45%;
+}
+#EY2{
+    left:27%;
+    top:45%;
+}
+#EY3{
+    left:36%;
+    top:45%;
+}
+
+#EG0{
+    left:45%;
+    top:9%;
+}
+#EG1{
+    left:45%;
+    top:18%;
+}
+#EG2{
+    left:45%;
+    top:27%;
+}
+#EG3{
+    left:45%;
+    top:36%;
+}
+
+#ER0{
+    left:81%;
+    top:45%;
+}
+#ER1{
+    left:72%;
+    top:45%;
+}
+#ER2{
+    left:63%;
+    top:45%;
+}
+#ER3{
+    left:54%;
+    top:45%;
+}
+
+#EB0{
+    left:45%;
+    top:81%;
+}
+#EB1{
+    left:45%;
+    top:72%;
+}
+#EB2{
+    left:45%;
+    top:63%;
+}
+#EB3{
+    left:45%;
+    top:54%;
+}

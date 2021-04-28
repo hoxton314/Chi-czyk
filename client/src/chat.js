@@ -22,3 +22,6 @@ $(function () {
 socket.on('updatechat', function (username, data) {
     $('#conversation').append('<b>' + username + ':</b> ' + data + '<br>')
 })
+
+
+

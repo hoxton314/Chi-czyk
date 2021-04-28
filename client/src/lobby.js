@@ -1,9 +1,10 @@
-window.socketRoom = 'Default'
+WINDOWsocketRoom = 'Default'
 socket.on('updaterooms', function (roomsObj, current_room) {
+    console.log(roomsObj)
     if (current_room == undefined) {
-        current_room = window.socketRoom
+        current_room = WINDOWsocketRoom
     } else {
-        window.socketRoom = current_room
+        WINDOWsocketRoom = current_room
     }
     function count(userlist) {
         if (userlist == undefined || userlist == []) {
@@ -47,7 +48,7 @@ function switchRoom(room) {
         let dataMap = []
         if (userdata != undefined) {
             for (let property in userdata) {
-                dataMap.push([userdata[property].nickname, userdata[property].ready])
+                dataMap.push([userdata[property].id, userdata[property].ready])
             }
             //console.log(dataMap)
         }
@@ -55,14 +56,26 @@ function switchRoom(room) {
         let readyState = false
         userlist.forEach((nickname) => {
             if (dataMap != undefined) {
-                readyState = dataMap.filter(a => a[0] == nickname)[0][1]
+                readyState = dataMap.filter(a => a[0] == nickname[0])[0][1]
             } else {
                 readyState = false
             }
+            div = $('<div>')
+            div.addClass('nickname').text(nickname[1])
+            checkbox = $('<input>')
+            checkbox.prop('type', 'checkbox')
+                .prop('name', 'readystate')
+                .prop('id', 'state-' + nickname[0])
+                .prop('checked', readyState)
+                .addClass('ready-state')
+                .prop('disabled', 'disabled')
 
+            div.append(checkbox)
 
-            $('#user-list').append('<div class="nickname" >' + `${nickname}` + '<input disabled="disabled" type="checkbox" class="ready-state" id="state-' + nickname + '" name="readystate" > </div>')
-            $('state-' + nickname).prop('checked', readyState)
+            $('#user-list').append(div)
+
+            //$('#user-list').append('<div class="nickname" >' + `${nickname}` + '<input readonly type="checkbox" class="ready-state" id="state-' + nickname + '" name="readystate" > </div>')
+            //$('state-' + nickname).prop('checked', readyState)
         })
 
 
@@ -77,9 +90,20 @@ function switchRoom(room) {
 $(function () {
     $('#roombutton').click(function () {
         if ($('#roomname').val() != "") {
+            let regX = /^[0-9a-zA-Z\.\,()]+$/
             var name = $('#roomname').val()
-            $('#roomname').val('')
-            socket.emit('create', name)
+            if ($('#rooms').children().text().split(' ').filter(a => a.charAt(1) != '/' && a != '').filter(a => a == name) == '') {
+                if (regX.test(name)) {
+                    $('#roomname').val('')
+                    socket.emit('create', name)
+                } else {
+                    alert('Lobby name contains invalid characters')
+                }
+
+            } else {
+                alert('Lobby name is taken.')
+            }
+
         }
     })
 })

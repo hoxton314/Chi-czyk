@@ -1,3 +1,4 @@
+//const { $CombinedState } = require("redux")
 
 const socket = io("http://localhost:8080", {
     "force new connection": true,
@@ -11,19 +12,26 @@ const socket = io("http://localhost:8080", {
 
 socket.on('connect', function () {
 
+    //$('#game-container').css('display', 'none')
     let username = prompt("Type your nickname: ")
     while (username == "" || username == undefined) {
         username = prompt("Your nickname can't be empty! Type your nickname: ")
     }
     socket.emit('adduser', username)
-
+    WINDOWusername = username
 })
 
 
 function debug() {
     socket.emit('debug')
 }
-socket.on('debugoutput', function (a, b) {
+socket.on('debugoutput', function (a, b, c) {
     console.log(a)
     console.log(b)
+    console.log(c)
+})
+
+
+socket.on('getMyID', function (ID) {
+    WINDOWuserID = ID
 })
