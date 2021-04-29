@@ -17,10 +17,6 @@ module.exports = {
             console.log('Server started on port:', PORT)
         })
 
-        app.get('request', function (req, res) {
-            res.send(PORT + '');
-        });
-
         app.use(function (req, res, next) {
 
             res.header('Access-Control-Allow-Origin', "*");
