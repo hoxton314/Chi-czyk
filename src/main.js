@@ -1,20 +1,41 @@
 module.exports = {
     init: () => {
-        const app = require("express")()
+        const PORT = process.env.PORT || 8080
         const express = require("express")
-        //const httpServer = require("http").createServer(app);
-        const httpServer = app.listen(process.env.PORT || 8080)
-        const redux = require("redux")
-        const { v4: uuidv4 } = require('uuid');
-
-        var search = require(__dirname + "/search")
-
+        const app = require("express")()
+        const httpServer = require("http").createServer(app);
         const options = {
             cors: {
                 origin: "*",
             }
         };
         const io = require("socket.io")(httpServer, options);
+        //const httpServer = app.listen(process.env.PORT || 8080)
+
+        //const httpServer = require("http").createServer(app)
+        httpServer.listen(PORT, function () {
+            console.log('Server started on port:', PORT)
+        })
+
+        app.get('request', function (req, res) {
+            res.send(PORT + '');
+        });
+
+        app.use(function (req, res, next) {
+
+            res.header('Access-Control-Allow-Origin', "*");
+            res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,PUT,PATCH,DELETE');
+            res.header('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type');
+            res.header('Access-Control-Allow-Credentials', true);
+            next();
+
+
+        },
+            express.static('client'))
+
+        const redux = require("redux")
+        const { v4: uuidv4 } = require('uuid');
+        var search = require(__dirname + "/search")
 
         app.all('/', function (request, response, next) {
             response.header('Access-Control-Allow-Origin', "*");

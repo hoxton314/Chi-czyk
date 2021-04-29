@@ -2,8 +2,6 @@ const express = require("express")
 const app = express()
 const PORT = process.env.PORT || 3000
 
-const path = require('path')
-const fs = require('fs')
 
 
 var main = require('./src/main')
@@ -12,10 +10,10 @@ main.init()
 
 
 
-const httpServer = require("http").createServer(app)
-httpServer.listen(PORT, function () {
-  console.log('Server started on port:', PORT)
-})
+//const httpServer = require("http").createServer(app)
+//httpServer.listen(PORT, function () {
+//  console.log('Server started on port:', PORT)
+//})
 
 
 app.use(function (req, res, next) {
