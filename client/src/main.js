@@ -1,6 +1,10 @@
 //const { $CombinedState } = require("redux")
+console.log(location.href)
+let tempArray = location.href.split(':')
+let href = tempArray[0] + ':' + tempArray[1] + ':' + '8080/'
 
-const socket = io("http://localhost:8080", {
+console.log(href)
+const socket = io(href, {
     "force new connection": true,
     "reconnectionAttempts": "Infinity",
     "timeout": 10001,
