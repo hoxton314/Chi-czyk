@@ -3,7 +3,7 @@ module.exports = {
         const app = require("express")()
         const express = require("express")
         //const httpServer = require("http").createServer(app);
-        const httpServer = app.listen(8080)
+        const httpServer = app.listen(process.env.PORT || 8080)
         const redux = require("redux")
         const { v4: uuidv4 } = require('uuid');
 
