@@ -1,7 +1,7 @@
 //const { $CombinedState } = require("redux")
 console.log(location.href)
 let tempArray = location.href.split(':')
-let href = tempArray[0] + ':' + tempArray[1] + ':' + '8080/'
+let href = tempArray[0] + ':' + tempArray[1] + ':' + (process.env.PORT || 8080) + '/'
 
 console.log(href)
 const socket = io(href, {
