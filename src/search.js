@@ -23,7 +23,7 @@ module.exports = {
             return [true, 4 - out.roomcount]
         } else { return [false, 4 - out.roomcount] }
     },
-    pawnPos: (playerColor, startingPos, count) => {
+    pawnPos: (playerColor, startingPos, count, lastData) => {
 
         function colorSwitcher(colorN) {
             switch (colorN) {
@@ -61,7 +61,7 @@ module.exports = {
                     while (count > 0) {
                         if (position == 9 && playerColor == colorSwitcher(color)) {
                             phase = 'E'
-                            color = colorSwitcher(color)
+
                             break
                         } else if (position == 9 && playerColor != colorSwitcher(color)) {
                             position = 0
@@ -73,8 +73,26 @@ module.exports = {
                         }
                     }
                     if (phase == 'E') {
+                        console.log(lastData)
                         //POPRAWIĆ KOŃCZENIE Z PIONKIEM !!!
-                        position = 4
+                        if (count > 4) {
+                            //niewstrzelony
+                            position = startingPos.charAt(2)
+                            phase = 'M'
+                        } else {
+                            //wstrzelony
+                            if (lastData[count - 1] == '') {
+                                color = playerColor
+                                position = count - 1
+                            } else {
+                                position = startingPos.charAt(2)
+                                phase = 'M'
+                                //zajete
+                            }
+
+
+                        }
+                        //position = 4
                     }
                     return phase + color + position
                 }

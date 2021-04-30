@@ -61,3 +61,7 @@ socket.on('updateGameState', function (playerColor, throwCount, data) {
 
 })
 
+socket.on('gameEnd', function (winner) {
+    alert(winner + ' won!')
+    window.location.reload(true)
+})
