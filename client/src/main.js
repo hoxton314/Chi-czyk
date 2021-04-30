@@ -1,6 +1,6 @@
 //const { $CombinedState } = require("redux")
 console.log(location.href)
-
+import { Lobby } from './lobby.js'
 
 const socket = io(location.href, {
     "force new connection": true,
@@ -37,3 +37,5 @@ socket.on('debugoutput', function (a, b, c) {
 socket.on('getMyID', function (ID) {
     WINDOWuserID = ID
 })
+
+Lobby.main()

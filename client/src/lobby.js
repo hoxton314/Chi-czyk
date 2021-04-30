@@ -1,3 +1,4 @@
+
 WINDOWsocketRoom = 'Default'
 socket.on('updaterooms', function (roomsObj, current_room) {
     console.log(roomsObj)
