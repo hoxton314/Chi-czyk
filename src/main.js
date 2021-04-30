@@ -288,17 +288,46 @@ module.exports = {
                 }
                 if (pawn != 'skip') {
                     let map = playSession.getState().value[socket.room].gameState
-                    let aftermath = search.pawnPos(playSession.getState().value[socket.room].gameData.activePlayer, pawn, playSession.getState().value[socket.room].gameData.throw)
+                    let aftermath = search.pawnPos(playSession.getState().value[socket.room].gameData.activePlayer, pawn, playSession.getState().value[socket.room].gameData.throw, playSession.getState().value[socket.room].gameState['E' + playSession.getState().value[socket.room].gameData.activePlayer])
+                    if (aftermath == 'wrong') { return }
                     console.log('==!!!==========================')
-                    console.log(pawn.slice(0, 2))
-                    console.log(pawn.slice(-1))
-                    console.log(aftermath.slice(0, 2))
-                    console.log(aftermath.slice(-1))
 
-                    console.log(map)
-                    map[pawn.slice(0, 2)][pawn.slice(-1)] = map[pawn.slice(0, 2)][pawn.slice(-1)].replace(playSession.getState().value[socket.room].gameData.activePlayer, '')
-                    map[pawn.slice(0, 2)][pawn.slice(-1)] = map[pawn.slice(0, 2)][pawn.slice(-1)].replace(playSession.getState().value[socket.room].gameData.activePlayer.toLowerCase(), '')
-                    map[aftermath.slice(0, 2)][aftermath.slice(-1)] += playSession.getState().value[socket.room].gameData.activePlayer
+                    let pawnObjName = pawn.slice(0, 2)
+                    let pawnPlace = pawn.slice(-1)
+                    let aftermathObjName = aftermath.slice(0, 2)
+                    let aftermathPlace = aftermath.slice(-1)
+                    let pCOLOR = playSession.getState().value[socket.room].gameData.activePlayer
+                    console.log(pawnObjName)
+                    console.log(pawnPlace)
+                    console.log(aftermathObjName)
+                    console.log(aftermathPlace)
+
+                    console.log('WARUNKI')
+                    console.log(aftermath.charAt(0) == 'M')
+                    console.log(aftermath.charAt(2) != '0')
+
+                    console.log((map[aftermathObjName][aftermathPlace]) + ' ' + !(map[aftermathObjName][aftermathPlace].includes(pCOLOR)))
+                    console.log(map[aftermathObjName][aftermathPlace] != '')
+                    console.log('WARUNKI END')
+                    map[pawnObjName][pawnPlace] = map[pawnObjName][pawnPlace].replace(pCOLOR, '')
+                    map[pawnObjName][pawnPlace] = map[pawnObjName][pawnPlace].replace(pCOLOR.toLowerCase(), '')
+                    if (aftermath.charAt(0) == 'M' && aftermath.charAt(2) != '0' && !(map[aftermathObjName][aftermathPlace].includes(pCOLOR)) && map[aftermathObjName][aftermathPlace] != '') {
+                        let playerToReturnPawn = map[aftermathObjName][aftermathPlace].charAt(0)
+                        let returnPawnCount = map[aftermathObjName][aftermathPlace].length
+                        map[aftermathObjName][aftermathPlace] = pCOLOR
+                        let counterReturn = 0
+                        while (returnPawnCount > 0) {
+                            if (map['S' + playerToReturnPawn][counterReturn] == '') {
+                                map['S' + playerToReturnPawn][counterReturn] = playerToReturnPawn.toLowerCase()
+                                returnPawnCount--
+                            }
+                            counterReturn--
+                        }
+                    } else {
+                        map[aftermathObjName][aftermathPlace] += pCOLOR
+                    }
+
+
                     console.log(map)
 
                     playSession.dispatch({ type: 'edit', roomname: socket.room, property: 'gameState', propertyValue: map })
@@ -313,9 +342,19 @@ module.exports = {
                     propertyValue: { 'activePlayer': nextPlayer, 'throw': (Math.floor(Math.random() * 6) + 1), 'playerColors': playSession.getState().value[socket.room].gameData.playerColors }
                 })
                 io.sockets.in(socket.room).emit('updateGameState', playSession.getState().value[socket.room].gameData.activePlayer, playSession.getState().value[socket.room].gameData.throw, playSession.getState().value[socket.room].gameState)
-                //search.pawnPos(playerColor, startingPos, count)
-
-
+                let map = playSession.getState().value[socket.room].gameState
+                if (map['EY'][0] == 'Y' && map['EY'][1] == 'Y' && map['EY'][2] == 'Y' && map['EY'][3] == 'Y') {
+                    io.sockets.in(socket.room).emit('gameEnd', 'Yellow')
+                }
+                if (map['EG'][0] == 'G' && map['EG'][1] == 'G' && map['EG'][2] == 'G' && map['EG'][3] == 'G') {
+                    io.sockets.in(socket.room).emit('gameEnd', 'Green')
+                }
+                if (map['ER'][0] == 'R' && map['ER'][1] == 'R' && map['ER'][2] == 'R' && map['ER'][3] == 'R') {
+                    io.sockets.in(socket.room).emit('gameEnd', 'Red')
+                }
+                if (map['EB'][0] == 'B' && map['EB'][1] == 'B' && map['EB'][2] == 'B' && map['EY'][3] == 'B') {
+                    io.sockets.in(socket.room).emit('gameEnd', 'Blue')
+                }
 
             })
 

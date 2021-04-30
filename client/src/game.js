@@ -218,3 +218,7 @@ function skip() {
 }
 
 
+socket.on('gameEnd', function (winner) {
+    alert(winner + ' won!')
+    window.location.reload(true)
+})
