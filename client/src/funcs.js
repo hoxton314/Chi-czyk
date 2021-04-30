@@ -1,6 +1,4 @@
-
 export class Funcs {
-
     static colorSwitcher(colorN) {
         switch (colorN) {
             case 'Y':
@@ -29,7 +27,6 @@ export class Funcs {
                 return 'żółtych'
         }
     }
-
     static gameRenderer(data, pColor, throwC, WINDOWcolor2137) {
         var color = 'Y'
         for (let i = 0; i < 4; i++) {
@@ -43,7 +40,6 @@ export class Funcs {
                     $('#S' + color + v).empty()
                 }
             })
-
             data['M' + color].forEach((element, v) => {
                 if (element.length >= 1) {
 
@@ -56,7 +52,6 @@ export class Funcs {
                     $('#M' + color + v).empty()
                 }
             })
-
             data['E' + color].forEach((element, v) => {
                 if (element != '' && element != undefined) {
                     let tempObj = $('<div>')
@@ -67,11 +62,8 @@ export class Funcs {
                     $('#E' + color + v).empty()
                 }
             })
-
-
             color = this.colorSwitcher(color)
         }
-
         if (WINDOWcolor2137 != 'Y') {
             $('.MYpawn').css('filter', 'brightness(30%)')
             $('.SYpawn').css('filter', 'brightness(30%)')
@@ -92,13 +84,10 @@ export class Funcs {
             $('.SBpawn').css('filter', 'brightness(30%)')
             $('.EBpawn').css('filter', 'brightness(30%)')
         }
-
-
         if ((($('.M' + WINDOWcolor2137 + 'pawn').length) == 0) && (throwC != 1 && throwC != 6)) {
             skip()
             return
         }
-
         if (pColor == WINDOWcolor2137) {
 
             $('.S' + WINDOWcolor2137 + 'pawn').click(function () {
@@ -107,31 +96,16 @@ export class Funcs {
             $('.M' + WINDOWcolor2137 + 'pawn').click(function () {
                 movePawn($(this).parent().attr('id'), throwC)
             });
-
         }
-
-
         function movePawn(pawnLocation, count) {
-            console.log('click!')
-            console.log(pawnLocation)
-            console.log(count)
-
             if (pawnLocation.charAt(0) == 'S' && (count == 1 || count == 6)) {
                 socket.emit('updatePos', pawnLocation)
-                console.log('wychodze z pola')
             } else if (pawnLocation.charAt(0) == 'M') {
                 socket.emit('updatePos', pawnLocation)
-                console.log('ruszam dalej')
             }
-
         }
-
         function skip() {
-            console.log('skip!')
             socket.emit('updatePos', 'skip')
         }
-
     }
-
-
 }

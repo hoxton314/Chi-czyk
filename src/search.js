@@ -1,30 +1,22 @@
-
 module.exports = {
-
     getUser: (room, userlistObj) => {
-
-
         let readyList = []
-
         for (let property in userlistObj) {
             if (userlistObj[property].room == room) {
                 readyList.push([userlistObj[property].id, userlistObj[property].ready])
             }
         }
-
         console.log(readyList)
         let out = { 'ready': 0, 'roomcount': 0 }
         readyList.forEach(element => {
             if (element[1] == true) { out.ready++ }
             out.roomcount++
         })
-        console.log(out)
         if (out.ready == out.roomcount && out.roomcount >= 2) {
             return [true, 4 - out.roomcount]
         } else { return [false, 4 - out.roomcount] }
     },
     pawnPos: (playerColor, startingPos, count, lastData) => {
-
         function colorSwitcher(colorN) {
             switch (colorN) {
                 case 'Y':
@@ -39,7 +31,6 @@ module.exports = {
                     return 'Y'
             }
         }
-
         let area = startingPos.charAt(0)
         let color = startingPos.charAt(1)
         let position = startingPos.charAt(2)
@@ -61,7 +52,6 @@ module.exports = {
                     while (count > 0) {
                         if (position == 9 && playerColor == colorSwitcher(color)) {
                             phase = 'E'
-
                             break
                         } else if (position == 9 && playerColor != colorSwitcher(color)) {
                             position = 0
@@ -74,7 +64,6 @@ module.exports = {
                     }
                     if (phase == 'E') {
                         console.log(lastData)
-                        //POPRAWIĆ KOŃCZENIE Z PIONKIEM !!!
                         if (count > 4) {
                             //niewstrzelony
                             position = startingPos.charAt(2)
@@ -89,15 +78,12 @@ module.exports = {
                                 phase = 'M'
                                 //zajete
                             }
-
-
                         }
                         //position = 4
                     }
                     return phase + color + position
                 }
             case 'E':
-                //POPRAWIĆ KOŃCZENIE Z PIONKIEM !!!
                 break;
             default:
                 break;
@@ -145,7 +131,5 @@ module.exports = {
                     return 'Y'
             }
         }
-
     }
-
 }
